@@ -281,10 +281,27 @@
       display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-muted);
     }
     .product-feature::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .product-subscribe {
+      display: flex; gap: 8px; margin-top: auto;
+    }
+    .product-subscribe input {
+      flex: 1; background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      border-radius: 10px; padding: 11px 14px; color: var(--text-bright);
+      font-size: 13px; font-family: inherit; outline: none; transition: border-color 0.2s;
+    }
+    .product-subscribe input::placeholder { color: var(--text-muted); }
+    .product-subscribe input:focus { border-color: rgba(59,130,246,0.5); box-shadow: 0 0 0 3px rgba(59,130,246,0.08); }
+    .product-subscribe .btn-sub {
+      background: linear-gradient(135deg, var(--primary), #2563eb); color: #fff; font-weight: 700;
+      border: none; border-radius: 10px; padding: 11px 18px; font-size: 13px;
+      cursor: pointer; white-space: nowrap; transition: all 0.25s;
+      box-shadow: 0 0 20px rgba(59,130,246,0.3);
+    }
+    .product-subscribe .btn-sub:hover { box-shadow: 0 0 35px rgba(59,130,246,0.55); transform: translateY(-1px); }
 
     /* ── PROBLEM / SOLUTION GRID ── */
     .icon-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 16px; margin-top: 52px;
     }
     .icon-card {
@@ -303,7 +320,7 @@
       display: flex; align-items: center; justify-content: center;
     }
     .icon-wrap svg { width: 22px; height: 22px; }
-    .icon-wrap-problem { background: rgba(239,68,68,0.1); }
+    .icon-wrap-problem { background: rgba(59,130,246,0.12); }
     .icon-wrap-solution { background: rgba(0,212,255,0.1); }
     .icon-card-title { font-size: 14px; font-weight: 700; color: var(--text-bright); margin-bottom: 4px; }
     .icon-card-sub { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
@@ -370,7 +387,8 @@
       appearance: none;
     }
     .form-group input::placeholder { color: var(--text-muted); }
-    .form-group input:focus, .form-group select:focus { border-color: rgba(59,130,246,0.5); box-shadow: 0 0 0 3px rgba(59,130,246,0.08); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: rgba(59,130,246,0.5); box-shadow: 0 0 0 3px rgba(59,130,246,0.08); }
+    .form-group textarea { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text-bright); font-size: 14px; font-family: inherit; outline: none; resize: vertical; transition: border-color 0.2s; width: 100%; }
     .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394a3b8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
     .form-group select option { background: #0d1526; color: var(--text); }
     .form-checks { display: flex; flex-direction: column; gap: 14px; margin: 24px 0 32px; }
@@ -379,7 +397,7 @@
       width: 18px; height: 18px; border-radius: 5px; border: 1px solid var(--border);
       background: rgba(255,255,255,0.04); cursor: pointer; accent-color: var(--primary); margin-top: 1px; flex-shrink: 0;
     }
-    .submit-btn { width: 100%; padding: 16px; font-size: 16px; font-weight: 700; border-radius: 12px; }
+    .submit-btn { width: 100%; padding: 16px; font-size: 16px; font-weight: 700; border-radius: 12px; margin-top: 24px; }
 
     /* ── BENEFITS ── */
     .benefits-grid {
@@ -506,7 +524,7 @@
       <li><a href="#hero">Home</a></li>
       <li><a href="#products">Products</a></li>
       <li><a href="#features">Features</a></li>
-      <li><a href="#release-notes">Release Notes</a></li>
+      <li><a href="#register">Register</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#register" class="btn btn-primary" style="font-size:14px;padding:10px 22px;">Pre Register</a>
@@ -544,10 +562,10 @@
     </div>
 
     <!-- Headline -->
-    <div class="hero-tag"><span></span>Two Products · One Platform · One Launch</div>
+    <div class="hero-tag"><span></span>Two Platforms &middot; One Bold Mission &middot; Launching 2027</div>
     <h1>Something <span class="grad">Amazing</span><br/>Is Coming</h1>
     <p class="hero-sub">
-      Launching two powerful platforms designed to transform enterprise security operations and intelligent analytics — built for the AI era.
+      The wait is almost over. Two category-defining platforms — built to eliminate alert fatigue, automate every investigation, and put AI to work deep inside your perimeter. Zero compromise. Zero noise. Total control.
     </p>
     <div class="hero-ctas">
       <a href="#register" class="btn btn-accent">Pre Register Now</a>
@@ -571,38 +589,24 @@
     <div class="product-cards">
 
       <!-- Crucible -->
-      <div class="glass product-card card-crucible reveal reveal-delay-1">
+      <div class="glass product-card card-crucible reveal reveal-delay-1" style="align-items:center;text-align:center;padding:48px 36px 40px;">
         <div class="product-card-glow"></div>
-        <img src="images/crucible-logo-white-transparent.png" class="product-logo" alt="Bloo Crucible" />
+        <img src="images/crucible-logo-white-transparent.png" class="product-logo" alt="Bloo Crucible" style="object-position:center;" />
         <div class="product-badge">Launching Soon</div>
-        <p class="product-desc">An autonomous AI SOC that investigates every security signal with a fleet of specialist agents, clusters alerts into real incidents, and proposes response — with humans in control of every consequential action.</p>
-        <div class="product-features">
-          <div class="product-feature">Autonomous triage & investigation</div>
-          <div class="product-feature">1,200+ pre-built integrations</div>
-          <div class="product-feature">5 LLM providers supported</div>
-          <div class="product-feature">Zero customer data leaves your environment</div>
-        </div>
-        <div style="display:flex;gap:10px;margin-top:8px;">
-          <a href="#register" class="btn btn-primary" style="font-size:13px;padding:10px 20px;">Pre Register</a>
-          <a href="#release-notes" class="btn btn-ghost">Release Notes</a>
+        <div class="product-subscribe">
+          <input type="email" placeholder="Enter your email" />
+          <button type="button" class="btn-sub" onclick="subscribeProduct(this,'Crucible')">Notify Me</button>
         </div>
       </div>
 
       <!-- SynthAI -->
-      <div class="glass product-card card-synthai reveal reveal-delay-2">
+      <div class="glass product-card card-synthai reveal reveal-delay-2" style="align-items:center;text-align:center;padding:48px 36px 40px;">
         <div class="product-card-glow"></div>
-        <img src="images/synthai-logo-white-transparent.png" class="product-logo" alt="Bloo SynthAI" />
+        <img src="images/synthai-logo-white-transparent.png" class="product-logo" alt="Bloo SynthAI" style="object-position:center;" />
         <div class="product-badge">Launching Soon</div>
-        <p class="product-desc">A conversational analytics agent that answers natural-language security and operations questions through a deterministic 5-stage pipeline — delivering evidence-backed, fully auditable answers in seconds.</p>
-        <div class="product-features">
-          <div class="product-feature">5-stage query intelligence pipeline</div>
-          <div class="product-feature">Real-time token cost visibility</div>
-          <div class="product-feature">4 LLM providers supported</div>
-          <div class="product-feature">100% reproducible, auditable answers</div>
-        </div>
-        <div style="display:flex;gap:10px;margin-top:8px;">
-          <a href="#register" class="btn btn-primary" style="font-size:13px;padding:10px 20px;">Pre Register</a>
-          <a href="#release-notes" class="btn btn-ghost">Release Notes</a>
+        <div class="product-subscribe">
+          <input type="email" placeholder="Enter your email" />
+          <button type="button" class="btn-sub" onclick="subscribeProduct(this,'SynthAI')">Notify Me</button>
         </div>
       </div>
 
@@ -621,159 +625,15 @@
       <p class="section-sub">Today's security and analytics teams face compounding problems that traditional tools can't solve fast enough.</p>
     </div>
     <div class="icon-grid">
-      <div class="icon-card reveal reveal-delay-1"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/><line x1="11" y1="6.5" x2="13" y2="6.5"/><line x1="17.5" y1="11" x2="17.5" y2="13"/><line x1="6.5" y1="11" x2="6.5" y2="13"/><line x1="11" y1="17.5" x2="13" y2="17.5"/></svg></div><div><div class="icon-card-title">Broken Data Silos</div><div class="icon-card-sub">Security data trapped across dozens of disconnected tools with no unified view.</div></div></div>
-      <div class="icon-card reveal reveal-delay-2"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="icon-card-title">Slow Manual Operations</div><div class="icon-card-sub">Analysts spend hours on repetitive triage while real threats go uninvestigated.</div></div></div>
-      <div class="icon-card reveal reveal-delay-3"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div><div><div class="icon-card-title">Security Threats</div><div class="icon-card-sub">Alert volumes overwhelm teams — the average SOC investigates fewer than 10% of alerts.</div></div></div>
-      <div class="icon-card reveal reveal-delay-4"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><div><div class="icon-card-title">Compliance Challenges</div><div class="icon-card-sub">Audit trails are incomplete, inconsistent, and impossible to produce at speed.</div></div></div>
-      <div class="icon-card reveal reveal-delay-1"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div><div><div class="icon-card-title">Poor Visibility</div><div class="icon-card-sub">No single source of truth across cloud, identity, endpoint, and network activity.</div></div></div>
-      <div class="icon-card reveal reveal-delay-2"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="icon-card-title">High Infrastructure Cost</div><div class="icon-card-sub">Over-provisioned tooling with low ROI and unpredictable AI spend.</div></div></div>
-      <div class="icon-card reveal reveal-delay-3"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h.01M15 9h.01M9 15s1.5 2 3 2 3-2 3-2"/><line x1="9" y1="3" x2="9" y2="7"/><line x1="15" y1="3" x2="15" y2="7"/></svg></div><div><div class="icon-card-title">Lack of Automation</div><div class="icon-card-sub">Repetitive workflows that could be automated still demand human attention 24/7.</div></div></div>
-      <div class="icon-card reveal reveal-delay-4"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 0 1 9 9c0 3.18-1.65 5.97-4.13 7.6L15 22H9l-1.87-3.4A9 9 0 0 1 12 2z"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="12" y1="9" x2="12" y2="15"/></svg></div><div><div class="icon-card-title">AI Integration Complexity</div><div class="icon-card-sub">Integrating LLMs into production workflows without guardrails, cost control, or auditability.</div></div></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── SOLUTIONS ── -->
-<section class="section" style="background: rgba(59,130,246,0.02);">
-  <div class="container">
-    <div class="text-center reveal">
-      <div class="eyebrow">How Our Products Help</div>
-      <h2 class="section-title">Built to <span class="grad">Solve</span> Every Challenge</h2>
-      <p class="section-sub">Crucible and SynthAI work independently and together to close every gap in your enterprise security and analytics stack.</p>
-    </div>
-    <div class="icon-grid">
-      <div class="icon-card reveal reveal-delay-1"><div class="icon-wrap icon-wrap-solution"><svg viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div><div class="icon-card-title">Centralised Monitoring</div><div class="icon-card-sub">One platform, all signals — from every corner of your security stack.</div></div></div>
-      <div class="icon-card reveal reveal-delay-2"><div class="icon-wrap icon-wrap-solution"><svg viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div><div class="icon-card-title">Intelligent Automation</div><div class="icon-card-sub">Automated triage, playbook execution, and escalation — without human bottlenecks.</div></div></div>
-      <div class="icon-card reveal reveal-delay-3"><div class="icon-wrap icon-wrap-solution"><svg viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div><div><div class="icon-card-title">AI-Powered Insights</div><div class="icon-card-sub">Structured, evidence-backed answers from natural-language queries in seconds.</div></div></div>
-      <div class="icon-card reveal reveal-delay-4"><div class="icon-wrap icon-wrap-solution"><svg viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="icon-card-title">Better Security</div><div class="icon-card-sub">Every signal investigated — no alert goes untouched, threats stop hiding in noise.</div></div></div>
-      <div class="icon-card reveal reveal-delay-1"><div class="icon-wrap icon-wrap-solution"><svg viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3m0 0h3l3 3v5h-3m-3-8v8m0 0H8a2 2 0 0 1-2-2V9"/><polyline points="17 14 19 16 23 12"/></svg></div><div><div class="icon-card-title">Faster Decision Making</div><div class="icon-card-sub">From signal to resolved incident at machine speed with humans where it matters.</div></div></div>
-      <div class="icon-card reveal reveal-delay-2"><div class="icon-wrap icon-wrap-solution"><svg viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div><div class="icon-card-title">Cost Optimisation</div><div class="icon-card-sub">Real-time token and infrastructure cost visibility — spend is visible before the bill arrives.</div></div></div>
-      <div class="icon-card reveal reveal-delay-3"><div class="icon-wrap icon-wrap-solution"><svg viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><div><div class="icon-card-title">Scalable Architecture</div><div class="icon-card-sub">Self-hosted on Kubernetes — scales with your workload, stays inside your perimeter.</div></div></div>
-      <div class="icon-card reveal reveal-delay-4"><div class="icon-wrap icon-wrap-solution"><svg viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><div class="icon-card-title">Enterprise Ready</div><div class="icon-card-sub">SOC 2, RBAC, secrets vault, multi-tenant isolation, and a complete audit trail.</div></div></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── RELEASE NOTES ── -->
-<section class="section" id="release-notes">
-  <div class="container text-center">
-    <div class="reveal">
-      <div class="eyebrow">What's Shipping</div>
-      <h2 class="section-title">Upcoming <span class="grad-purple">Release Notes</span></h2>
-      <p class="section-sub">A full breakdown of every feature, integration, and capability shipping on launch day.</p>
-    </div>
-    <div class="rn-card reveal">
-      <div class="rn-version">Version 1.0 — General Availability</div>
-      <div class="rn-title">Bloo Platform — Launch Release</div>
-      <div class="rn-features">
-        <div class="rn-feature"><span class="rn-feature-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> Autonomous AI Triage & Investigation (Crucible)</div>
-        <div class="rn-feature"><span class="rn-feature-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> 5-Stage Query Intelligence Pipeline (SynthAI)</div>
-        <div class="rn-feature"><span class="rn-feature-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> 1,200+ Pre-Built Security Integrations</div>
-        <div class="rn-feature"><span class="rn-feature-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> Multi-LLM Provider Support (Anthropic, OpenAI, Bedrock, Ollama)</div>
-        <div class="rn-feature"><span class="rn-feature-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> Enterprise Secrets Vault & Complete Audit Trail</div>
-        <div class="rn-feature"><span class="rn-feature-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> Real-Time Cost Ledger & Token Transparency</div>
-        <div class="rn-feature"><span class="rn-feature-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> Self-Hosted Kubernetes (AWS & Azure)</div>
-      </div>
-      <div class="rn-btns" style="justify-content:center;">
-        <a href="https://bloo-website-demo.vercel.app/release-notes/crucible" target="_blank" class="btn btn-primary">Crucible Release Notes</a>
-        <a href="https://bloo-website-demo.vercel.app/release-notes/synthai" target="_blank" class="btn btn-outline">SynthAI Release Notes</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── CTA BAND ── -->
-<section class="section-sm">
-  <div class="container">
-    <div class="cta-band reveal">
-      <div class="eyebrow" style="justify-content:center;">Limited Early Access</div>
-      <h2>Be Among the First<br/>to Experience It</h2>
-      <p>Pre-register today and receive a FREE personalised product demo immediately after launch.</p>
-      <a href="#register" class="btn btn-accent" style="font-size:17px;padding:16px 40px;">Pre Register Now →</a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── REGISTRATION FORM ── -->
-<section class="section" id="register">
-  <div class="container">
-    <div class="form-wrap reveal">
-      <div class="form-title">Reserve Your Spot</div>
-      <p class="form-sub">Pre-register for early access and a free personalised demo on launch day.</p>
-      <form onsubmit="handleSubmit(event)">
-        <div class="form-grid">
-          <div class="form-group"><label>Full Name *</label><input type="text" placeholder="John Smith" required /></div>
-          <div class="form-group"><label>Company Name *</label><input type="text" placeholder="Acme Corp" required /></div>
-          <div class="form-group"><label>Business Email *</label><input type="email" placeholder="john@acme.com" required /></div>
-          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1 555 000 0000" /></div>
-          <div class="form-group"><label>Country *</label>
-            <select required>
-              <option value="" disabled selected>Select country</option>
-              <option>United States</option><option>United Kingdom</option><option>India</option>
-              <option>Australia</option><option>Canada</option><option>Germany</option>
-              <option>Singapore</option><option>UAE</option><option>Other</option>
-            </select>
-          </div>
-          <div class="form-group"><label>Job Role *</label>
-            <select required>
-              <option value="" disabled selected>Select role</option>
-              <option>CISO / CSO</option><option>Security Analyst</option><option>SOC Manager</option>
-              <option>IT Director</option><option>CTO / CIO</option><option>DevOps / SRE</option>
-              <option>Product Manager</option><option>Other</option>
-            </select>
-          </div>
-          <div class="form-group"><label>Industry *</label>
-            <select required>
-              <option value="" disabled selected>Select industry</option>
-              <option>Financial Services</option><option>Healthcare</option><option>Technology</option>
-              <option>Government</option><option>Retail</option><option>Manufacturing</option>
-              <option>Telecommunications</option><option>Energy</option><option>Other</option>
-            </select>
-          </div>
-          <div class="form-group"><label>Number of Employees</label>
-            <select>
-              <option value="" disabled selected>Select range</option>
-              <option>1–50</option><option>51–200</option><option>201–500</option>
-              <option>501–1,000</option><option>1,001–5,000</option><option>5,000+</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-checks">
-          <label class="form-check"><input type="checkbox" checked /><span>I want a <strong>FREE Product Demo</strong> after launch — schedule me in.</span></label>
-          <label class="form-check"><input type="checkbox" checked /><span>Subscribe me to product updates, release notes, and launch announcements.</span></label>
-        </div>
-        <button type="submit" class="btn btn-accent submit-btn">Reserve My Spot →</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── BENEFITS ── -->
-<section class="section">
-  <div class="container">
-    <div class="text-center reveal">
-      <div class="eyebrow">Why Pre-Register</div>
-      <h2 class="section-title">What You Get on <span class="grad">Launch Day</span></h2>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card reveal reveal-delay-1"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><div class="benefit-title">Priority Product Access</div><div class="benefit-desc">Be first in line when the platform goes live.</div></div>
-      <div class="benefit-card reveal reveal-delay-2"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span><div class="benefit-title">Free Live Demo</div><div class="benefit-desc">A personalised walkthrough from our product team.</div></div>
-      <div class="benefit-card reveal reveal-delay-3"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><div class="benefit-title">Early Feature Access</div><div class="benefit-desc">Try new capabilities before general release.</div></div>
-      <div class="benefit-card reveal reveal-delay-4"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><div class="benefit-title">Product Documentation</div><div class="benefit-desc">Full technical docs and integration guides on day one.</div></div>
-      <div class="benefit-card reveal reveal-delay-1"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><div class="benefit-title">Launch Day Reminder</div><div class="benefit-desc">We'll remind you across email and calendar on launch day.</div></div>
-      <div class="benefit-card reveal reveal-delay-2"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div class="benefit-title">Direct Product Team Support</div><div class="benefit-desc">Dedicated onboarding support from the people who built it.</div></div>
-      <div class="benefit-card reveal reveal-delay-3"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span><div class="benefit-title">Exclusive Launch Offers</div><div class="benefit-desc">Pre-register pricing locked in before public announcement.</div></div>
-      <div class="benefit-card reveal reveal-delay-4"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 12l2 2 4-4"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><div class="benefit-title">Certification Opportunities</div><div class="benefit-desc">Early access to Bloo platform certification programmes.</div></div>
+      <div class="icon-card reveal reveal-delay-1"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/><line x1="11" y1="6.5" x2="13" y2="6.5"/><line x1="17.5" y1="11" x2="17.5" y2="13"/><line x1="6.5" y1="11" x2="6.5" y2="13"/><line x1="11" y1="17.5" x2="13" y2="17.5"/></svg></div><div><div class="icon-card-title">Broken Data Silos</div><div class="icon-card-sub">Security data trapped across dozens of disconnected tools with no unified view.</div></div></div>
+      <div class="icon-card reveal reveal-delay-2"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="icon-card-title">Slow Manual Operations</div><div class="icon-card-sub">Analysts spend hours on repetitive triage while real threats go uninvestigated.</div></div></div>
+      <div class="icon-card reveal reveal-delay-3"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div><div><div class="icon-card-title">Security Threats</div><div class="icon-card-sub">Alert volumes overwhelm teams — the average SOC investigates fewer than 10% of alerts.</div></div></div>
+      <div class="icon-card reveal reveal-delay-4"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><div><div class="icon-card-title">Compliance Challenges</div><div class="icon-card-sub">Audit trails are incomplete, inconsistent, and impossible to produce at speed.</div></div></div>
+      <div class="icon-card reveal reveal-delay-1"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div><div><div class="icon-card-title">Poor Visibility</div><div class="icon-card-sub">No single source of truth across cloud, identity, endpoint, and network activity.</div></div></div>
+      <div class="icon-card reveal reveal-delay-2"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="icon-card-title">High Infrastructure Cost</div><div class="icon-card-sub">Over-provisioned tooling with low ROI and unpredictable AI spend.</div></div></div>
+      <div class="icon-card reveal reveal-delay-3"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h.01M15 9h.01M9 15s1.5 2 3 2 3-2 3-2"/><line x1="9" y1="3" x2="9" y2="7"/><line x1="15" y1="3" x2="15" y2="7"/></svg></div><div><div class="icon-card-title">Lack of Automation</div><div class="icon-card-sub">Repetitive workflows that could be automated still demand human attention 24/7.</div></div></div>
+      <div class="icon-card reveal reveal-delay-4"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 0 1 9 9c0 3.18-1.65 5.97-4.13 7.6L15 22H9l-1.87-3.4A9 9 0 0 1 12 2z"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="12" y1="9" x2="12" y2="15"/></svg></div><div><div class="icon-card-title">AI Integration Complexity</div><div class="icon-card-sub">Integrating LLMs into production workflows without guardrails, cost control, or auditability.</div></div></div>
+      <div class="icon-card reveal reveal-delay-1"><div class="icon-wrap icon-wrap-problem"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div><div class="icon-card-title">Investigation Bottlenecks</div><div class="icon-card-sub">Critical investigations stall because analysts can't query, correlate, or surface evidence fast enough across fragmented data sources.</div></div></div>
     </div>
   </div>
 </section>
@@ -797,6 +657,59 @@
 
 <div class="divider"></div>
 
+<!-- ── REGISTRATION FORM ── -->
+<section class="section" id="register">
+  <div class="container">
+    <div class="form-wrap reveal">
+      <div class="form-title">How can we help?</div>
+      <p class="form-sub">We'd love to learn about your organization and see if we can help with your security goals. Share some details and we'll reach out to you.</p>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group"><label>First Name *</label><input type="text" placeholder="John" required /></div>
+          <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Smith" required /></div>
+          <div class="form-group"><label>Work Email *</label><input type="email" placeholder="john@acme.com" required /></div>
+          <div class="form-group"><label>Company *</label><input type="text" placeholder="Acme Corp" required /></div>
+          <div class="form-group"><label>Country</label>
+            <select>
+              <option value="" disabled selected>Select country</option>
+              <option>Argentina (+54)</option><option>Australia (+61)</option><option>Austria (+43)</option>
+              <option>Belgium (+32)</option><option>Brazil (+55)</option><option>Canada (+1)</option>
+              <option>Chile (+56)</option><option>China (+86)</option><option>Colombia (+57)</option>
+              <option>Denmark (+45)</option><option>Egypt (+20)</option><option>Finland (+358)</option>
+              <option>France (+33)</option><option>Germany (+49)</option><option>Greece (+30)</option>
+              <option>Hong Kong (+852)</option><option>India (+91)</option><option>Indonesia (+62)</option>
+              <option>Ireland (+353)</option><option>Israel (+972)</option><option>Italy (+39)</option>
+              <option>Japan (+81)</option><option>South Korea (+82)</option><option>Malaysia (+60)</option>
+              <option>Mexico (+52)</option><option>Netherlands (+31)</option><option>New Zealand (+64)</option>
+              <option>Norway (+47)</option><option>Philippines (+63)</option><option>Poland (+48)</option>
+              <option>Portugal (+351)</option><option>Saudi Arabia (+966)</option><option>Singapore (+65)</option>
+              <option>South Africa (+27)</option><option>Spain (+34)</option><option>Sweden (+46)</option>
+              <option>Switzerland (+41)</option><option>Taiwan (+886)</option><option>Thailand (+66)</option>
+              <option>Turkey (+90)</option><option>United Arab Emirates (+971)</option>
+              <option>United Kingdom (+44)</option><option>United States (+1)</option><option>Vietnam (+84)</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1 555 000 0000" /></div>
+          <div class="form-group full"><label>Interest</label>
+            <select>
+              <option value="" disabled selected>Select an interest</option>
+              <option>Enterprise Logging</option>
+              <option>SIEM with Detection Engineering</option>
+              <option>Managed Cyber Operations</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Additional Details</label>
+            <textarea placeholder="Tell us more about your organization and security goals..." rows="4"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-accent submit-btn">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ── FAQ ── -->
 <section class="section" id="contact">
   <div class="container">
@@ -811,42 +724,21 @@
           When will the products launch?
           <div class="faq-icon">+</div>
         </div>
-        <div class="faq-a">Bloo Crucible and Bloo SynthAI are targeted for General Availability in 2026. Pre-registered users will be notified first with a dedicated launch-day email and calendar invite.</div>
+        <div class="faq-a">Bloo Crucible and Bloo SynthAI are targeting General Availability in 2027. Pre-registered users will be notified first with a dedicated launch-day email and calendar invite.</div>
       </div>
       <div class="faq-item reveal reveal-delay-1">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Will there be a free demo after launch?
+          Can I Request for a Product Demo?
           <div class="faq-icon">+</div>
         </div>
-        <div class="faq-a">Yes. Every pre-registered user is eligible for a FREE personalised product demo with the Bloo product team. Check the box on the registration form and we'll reach out immediately after launch to schedule yours.</div>
+        <div class="faq-a">Absolutely. Pre-register your interest using the form above and our product team will personally reach out to schedule a tailored walkthrough of Crucible, SynthAI, or both — at a time that suits you.</div>
       </div>
       <div class="faq-item reveal reveal-delay-2">
         <div class="faq-q" onclick="toggleFaq(this)">
           Can I request enterprise pricing?
           <div class="faq-icon">+</div>
         </div>
-        <div class="faq-a">Absolutely. Pre-registered users receive exclusive early-access pricing locked in before public announcement. Contact our team through the registration form and select your company size for a tailored quote.</div>
-      </div>
-      <div class="faq-item reveal reveal-delay-3">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Will product walkthrough recordings be available?
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">Yes. Full product walkthrough recordings will be published on our YouTube channel on launch day. Pre-registered subscribers will receive direct links as part of the launch email.</div>
-      </div>
-      <div class="faq-item reveal reveal-delay-4">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          How do I access the release notes?
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">Full release notes for both Crucible and SynthAI are available now on the Bloo platform website. Click the Release Notes buttons on this page to explore every feature, integration, and capability shipping in v1.0.</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Is the platform self-hosted or cloud-based?
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">Both products are self-hosted on Kubernetes on AWS or Azure. Customer data — including investigation records, query payloads, and AI call content — never leaves your environment. Air-gapped deployments are supported via Ollama.</div>
+        <div class="faq-a">Yes. Pre-registered users receive exclusive early-access pricing locked in before public announcement. Register above and select your company size — our team will follow up with a tailored quote.</div>
       </div>
     </div>
   </div>
@@ -960,6 +852,16 @@
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
+  }
+
+  // Product card subscribe
+  function subscribeProduct(btn, product) {
+    const input = btn.previousElementSibling;
+    if (!input.value || !input.value.includes('@')) { input.focus(); return; }
+    btn.textContent = '✓ You\'re in!';
+    btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+    btn.disabled = true;
+    input.disabled = true;
   }
 
   // Form submit
